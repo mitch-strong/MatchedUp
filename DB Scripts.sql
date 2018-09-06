@@ -1,7 +1,7 @@
 CREATE SCHEMA `Matchup` ;
 
 CREATE TABLE `Matchup`.`Profile` (
-  `Profile_ID` VARCHAR(45) NOT NULL,
+  `Profile_ID` int(10) NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NULL,
   `Gender` VARCHAR(45) NULL,
   `DOB` DATETIME NULL,
@@ -11,8 +11,11 @@ CREATE TABLE `Matchup`.`Profile` (
   `Language` VARCHAR(45) NULL,
   `Major` VARCHAR(45) NULL,
   `Local` INT NULL,
+  `Email` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Profile_ID`),
-  UNIQUE INDEX `Profile_ID_UNIQUE` (`Profile_ID` ASC) VISIBLE);
+  UNIQUE `Email` (`Email`),
+  UNIQUE INDEX `Profile_ID_UNIQUE` (`Profile_ID` ASC));
 
   CREATE TABLE `Matchup`.`Topics` (
   `Topic_ID` VARCHAR(45) NOT NULL,
