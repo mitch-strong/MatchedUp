@@ -1,14 +1,17 @@
 from flask import Flask, render_template, json, request, jsonify
-from flask.ext.mysql import MySQL
+#from flask.ext.mysql import MySQL
+from flaskext.mysql import MySQL
+
 
 app = Flask(__name__)
 mysql = MySQL()
  
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'admin'
-app.config['MYSQL_DATABASE_DB'] = 'matchup'
+#app.config['MYSQL_DATABASE_PASSWORD'] = 'admin'
+app.config['MYSQL_DATABASE_DB'] = 'Matchup'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+
 mysql.init_app(app)
 
 @app.route("/")
@@ -34,7 +37,7 @@ def signUp():
 def getUser():
     conn = mysql.connect()
     cursor = conn.cursor()
-    sql = "SELECT * FROM users"
+    sql = "SELECT * FROM Profile"
     cursor.execute(sql)
     results = cursor.fetchall()
     return jsonify(results)
