@@ -47,68 +47,112 @@
       </div>
     </nav>
 
-    <header height=30%>
-      <div id="carouselEx ampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('https://cdn.pixabay.com/photo/2017/07/31/11/21/people-2557396__480.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Event 1</h3>
-              <p>Event Description 1</p>
-            </div>
-          </div>
-          <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('https://cdn.pixabay.com/photo/2018/02/03/16/11/avatar-3127928_1280.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Event 2</h3>
-              <p>Event Description 2</p>
-            </div>
-          </div>
-          <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('https://www.ewa.org/sites/main/files/imagecache/medium/main-images/14243029751_80c4425944_z.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Event 3</h3>
-              <p>Event Description 3</p>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </header>
+    
+    
 
-    <!-- Page Content -->
-    <div class="container">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-      <h1 class="my-4">Other Events</h1>
 
-      <!-- Marketing Icons Section -->
-      <div class="row">
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <h4 class="card-header"></h4>
-            <div class="card-body">
-              <p class="card-text"></p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-        </div>
-      </div>
 
-    </div>
+        
+		</div>
+		<div class="col-md-9">
+		    <div class="card">
+		        <div class="card-body">
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <h4>Your Profile</h4>
+		                    <hr>
+		                </div>
+		            </div>
+		            <div class="row">
+		                <div class="col-md-12">
+		                    <form>
+                              <div class="form-group row">
+                                <label for="username" class="col-4 col-form-label">Name*</label> 
+                                <div class="col-8">
+                                  <input id="name" name="Username" placeholder="Username" class="form-control here" required="required" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">Gender</label> 
+                                <div class="col-8">
+                                  <input id="name" name="Gender" placeholder="Gender" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="lastname" class="col-4 col-form-label">DOB</label> 
+                                <div class="col-8">
+                                  <input id="lastname" name="DOB" placeholder="DOB" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">From_City</label> 
+                                <div class="col-8">
+                                  <input id="text" name="text" placeholder="From_City" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              
+                            <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">New_City</label> 
+                                <div class="col-8">
+                                  <input id="text" name="text" placeholder="New_City" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">School</label> 
+                                <div class="col-8">
+                                  <input id="text" name="text" placeholder="School" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">Language</label> 
+                                <div class="col-8">
+                                  <input id="text" name="text" placeholder="Language" class="form-control here" type="text">
+                                </div>
+                              </div>
+                     <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">Major</label> 
+                                <div class="col-8">
+                                  <input id="text" name="text" placeholder="Major" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Email*</label> 
+                                <div class="col-8">
+                                  <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="website" class="col-4 col-form-label">Website</label> 
+                                <div class="col-8">
+                                  <input id="website" name="website" placeholder="website" class="form-control here" type="text">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="publicinfo" class="col-4 col-form-label">Public Info</label> 
+                                <div class="col-8">
+                                  <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="newpass" class="col-4 col-form-label">New Password</label> 
+                                <div class="col-8">
+                                  <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
+                                </div>
+                              </div> 
+                              <div class="form-group row">
+                                <div class="offset-4 col-8">
+                                  <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+                                </div>
+                              </div>
+                            </form>
+		                </div>
+		            </div>
+		            
     <!-- /.container -->
 
     <!-- Footer -->
