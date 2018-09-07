@@ -9,7 +9,7 @@ mysql = MySQL()
  
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
-#app.config['MYSQL_DATABASE_PASSWORD'] = 'admin'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'admin'
 app.config['MYSQL_DATABASE_DB'] = 'Matchup'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
@@ -17,7 +17,7 @@ mysql.init_app(app)
 
 @app.route("/")
 def main():
-    return "Welcome!"
+    return render_template('login.html')
 
 @app.route('/signUp',methods=['POST'])
 def signUp():
@@ -32,6 +32,11 @@ def signUp():
 
     cursor.execute("insert into users (name, email, password) values (_name, _email,_password )")
     data = cursor.fetchone()
+    cursor.close
+
+@app.route("/signUp",methods=['GET'])
+def newUser():
+    return render_template('signup.html')
 
 @app.route('/getMatchedProfiles',methods=['GET'])
 def getMatchedProfiles():
@@ -119,6 +124,9 @@ def getMatchedProfiles():
     #return jsonify(finalResultList)
     return render_template('Matches.html', data=finalResultList)
 
+@app.route('/userProfile',methods=['GET'])
+def getUserProfile():
+    return render_template('profile.html')
 
 @app.route('/getuser',methods=['GET'])
 def getUser():
