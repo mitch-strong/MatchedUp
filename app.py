@@ -33,6 +33,92 @@ def signUp():
     cursor.execute("insert into users (name, email, password) values (_name, _email,_password )")
     data = cursor.fetchone()
 
+@app.route('/getMatchedProfiles',methods=['GET'])
+def getMatchedProfiles():
+    #data = request.get_json()
+    #print("Event Data:",data)
+    #profile_id = data['Profile_Id']
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    sql = "SELECT B.Profile_ID as 'Match', COUNT(*) as 'Strength' FROM (SELECT Profile_ID, Topic_ID from `Matchup`.`Interests` WHERE Profile_ID = '4' )A JOIN (SELECT Profile_ID, Topic_ID from `Matchup`.`Interests` WHERE Profile_ID <> '4') B ON A.Topic_ID = B.Topic_ID GROUP BY B.Profile_ID ORDER BY COUNT(*) DESC"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    print(results)
+    pplList= []
+    for i in range(0,len(results)):
+        pplList.append(results[i][0])
+    print(pplList)
+    var_string = ','.join(['%s'] * len(pplList))
+    cursor.execute("Select * from Matchup.Profile where Profile_ID IN (%s)" % var_string,
+                tuple(pplList))
+    matchedPplResults = cursor.fetchall()
+
+    newresultlist = []
+    for i in range(0, len(results)):
+        for j in range(0, len(matchedPplResults)):
+            if(results[i][0] == matchedPplResults[j][0]):
+                newresult = []
+                newresult.append(matchedPplResults[j][0])
+                newresult.append(matchedPplResults[j][1])
+                newresult.append(matchedPplResults[j][2])
+                newresult.append(matchedPplResults[j][3])
+                newresult.append(matchedPplResults[j][4])
+                newresult.append(matchedPplResults[j][5])
+                newresult.append(matchedPplResults[j][6])
+                newresult.append(matchedPplResults[j][7])
+                newresult.append(matchedPplResults[j][8])
+                newresult.append(matchedPplResults[j][9])
+                newresult.append(matchedPplResults[j][10])
+                newresult.append(matchedPplResults[j][11])
+                newresult.append(results[i][1])
+                newresultlist.append(newresult)
+                #newlist = matchedPplResults[j] + newresult[1]
+                
+        #print(results[i][0])
+        #print(matchedPplResults[i][0])
+    print("fas:",newresult)
+    cursor.execute("SELECT A.Person, B.Topic AS 'Topic' FROM (   SELECT B.Profile_ID as 'Person', B.Topic_ID as 'Topic' FROM (SELECT Profile_ID, Topic_ID from `Matchup`.`Interests`  WHERE Profile_ID = '4' )A JOIN (SELECT Profile_ID, Topic_ID from `Matchup`.`Interests`  WHERE Profile_ID <> '4') B ON A.Topic_ID = B.Topic_ID ORDER BY B.Profile_ID DESC) A  JOIN  `Matchup`.`Topics` B  ON A.Topic = B.Topic_ID ORDER BY A.Person")
+    matchedInterests = cursor.fetchall()
+    #newlist = tuple(matchedPplResults) + tuple (matchedInterests)
+    #print(newlist)
+
+    #print(matchedInterests)
+    d = {}
+    for i in range(0,len(matchedInterests)):
+        if matchedInterests[i][0] in d:
+            l = []
+            l.append(d.get(matchedInterests[i][0]))
+            l.append(matchedInterests[i][1])
+            d[matchedInterests[i][0]] = l
+        else:
+            d[matchedInterests[i][0]] = matchedInterests[i][1]
+    print(d)
+
+    finalResultList = []
+    for i in range(0, len(newresultlist)):
+        for key in d:
+            if newresultlist[i][0] == key:
+                newresult = []
+                newresult.append(newresultlist[i][0])
+                newresult.append(newresultlist[i][1])
+                newresult.append(newresultlist[i][2])
+                newresult.append(newresultlist[i][3])
+                newresult.append(newresultlist[i][4])
+                newresult.append(newresultlist[i][5])
+                newresult.append(newresultlist[i][6])
+                newresult.append(newresultlist[i][7])
+                newresult.append(newresultlist[i][8])
+                newresult.append(newresultlist[i][9])
+                newresult.append(newresultlist[i][10])
+                newresult.append(newresultlist[i][11])
+                newresult.append(newresultlist[i][12])
+                newresult.append(d.get(key))
+                finalResultList.append(newresult)
+
+    cursor.close
+    #return jsonify(finalResultList)
+    return render_template('Matches.html', data=finalResultList)
+
 
 @app.route('/getuser',methods=['GET'])
 def getUser():
