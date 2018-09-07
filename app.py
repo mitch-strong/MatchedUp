@@ -86,16 +86,25 @@ ORDER BY X.NAME;"""
     cursor.execute(sql)
     results3 = cursor.fetchall()
     L = []
+    notin = ""
     for item in results2:
         for i2 in results:
             topics = ""
             if (i2[1] == item[0]):
+                notin += i2[0] + ", "
                 for i3 in results3:
                     if (i3[0] == item[0]):
                         topics += i3[1] + ", "
                 topics = topics[0: len(topics)-2]
                 e = event(item[0],i2[2], i2[3], item[1], topics)
                 L.append(e)
+    notin = notin[0: len(notin)-2]
+    sql = "SELECT * FROM `Matchup`.`Event` WHERE Event_ID not in (" + notin  + ")"
+    cursor.execute(sql)
+    resultsnotin = cursor.fetchall()
+    for item in resultsnotin:
+        e = event(item[1],item[2], item[3], None, None)
+        L.append(e)
     
     return render_template('index.html', data=L)
 

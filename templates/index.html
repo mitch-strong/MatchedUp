@@ -54,11 +54,12 @@
     <!-- Page Content -->
     <div class="container">
 
-      <h1 class="my-4">Events</h1>
+      <h1 class="my-4">Recommended Events</h1>
 
       <!-- Marketing Icons Section -->
       <div class="row">
         {% for item in data %}
+        {% if item[3] != None %}
         <div class="col-lg-4 mb-4">
           <div class="card h-100">
             <h4 class="card-header">{{item[0]}}</h4>
@@ -74,6 +75,30 @@
             </div>
           </div>
         </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+
+      <h1 class="my-4">Other Events</h1>
+
+      <!-- Marketing Icons Section -->
+      <div class="row">
+          {% for item in data %}
+          {% if item[3] == None %}
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <h4 class="card-header">{{item[0]}}</h4>
+            <div class="card-body">
+            <p class="card-text"><b>Location: {{item[1]}}</b></p>
+            <p class="card-text"><b>Time: {{item[2]}}</b></p>
+              <p class="card-text">Description</p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        {% endif %}
         {% endfor %}
       </div>
 
