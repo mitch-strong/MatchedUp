@@ -1,4 +1,4 @@
-from flask import Flask, render_template, json, request, jsonify
+from flask import Flask, render_template, json, request, jsonify, send_from_directory
 #from flask.ext.mysql import MySQL
 from flaskext.mysql import MySQL
 
@@ -40,7 +40,9 @@ def getUser():
     sql = "SELECT * FROM Profile"
     cursor.execute(sql)
     results = cursor.fetchall()
-    return jsonify(results)
+    return render_template('Matches.html', data=results)
+
+    #return jsonify(results)
 
 
 if __name__ == "__main__":
