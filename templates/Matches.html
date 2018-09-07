@@ -79,8 +79,8 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h1>{{data[0][1]}}</h1>
-    <p class="card-text">From City: {{data[0][4]}}</p>
-    <p class="card-text">Language: {{data[0][7]}}</p>
+    <p class="card-text">Email: {{data[0][10]}}</p>
+    <p class="card-text">Phone: {{data[0][11]}}</p>
   </div>
 
 </div>
@@ -95,9 +95,8 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
-    <link href="{{ url_for('static', filename='css/modern-business.css') }}" rel="stylesheet">
-
     <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    
     <script>// Get the modal
         var modal = document.getElementById('myModal');
         
