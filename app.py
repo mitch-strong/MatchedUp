@@ -91,9 +91,9 @@ def getMatchedProfiles():
     d = {}
     for i in range(0,len(matchedInterests)):
         if matchedInterests[i][0] in d:
-            l = []
-            l.append(d.get(matchedInterests[i][0]))
-            l.append(matchedInterests[i][1])
+            l = d.get(matchedInterests[i][0])
+            l = l + ", "
+            l = l + matchedInterests[i][1]
             d[matchedInterests[i][0]] = l
         else:
             d[matchedInterests[i][0]] = matchedInterests[i][1]
