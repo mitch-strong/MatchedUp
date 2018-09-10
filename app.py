@@ -38,6 +38,10 @@ def signUp():
 def newUser():
     return render_template('signup.html')
 
+@app.route("/forums",methods=['GET'])
+def forum():
+    return render_template('Forums.html')
+
 @app.route('/getMatchedProfiles',methods=['GET'])
 def getMatchedProfiles():
     #data = request.get_json()
